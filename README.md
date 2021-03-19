@@ -1,6 +1,6 @@
 # Overview
 
-Initiate Google Cloud Build (GCB), builds from Github Webhooks (GHW).  The Github webhook will POST to Google Cloud Run (GCR) endpoint, verify action to perform, the execute GCB build.  Think of this as a filter service for GitHub messages, filtering to specific (if any) GCB actions.
+Initiate Google Cloud Build (GCB), builds from Github Webhooks (GHW).  The Github webhook will POST to Google Cloud Run (GCR) endpoint, verify action to perform, then execute GCB build.  Think of this as a filter service for GitHub messages, filtering to specific (if any) GCB actions.
 
 The `config.js` file in this repository will be responsible for setting up which repositories, with which actions, should preform which builds.
 
@@ -12,7 +12,7 @@ The `config.js` file in this repository will be responsible for setting up which
 Add a trigger is a three step process:
  - Create a GitHub webhook on your repository that posts to this service
  - Update this service with the proper hook configuration, mapping GitHub webhook message events to Google Cloud Build Triggers
- - Create a Google Cloud Build - Trigger Webhook to preform the action
+ - Create a Google Cloud Build - Webhook Trigger to preform the action
 
 # Create Github Webhooks
 
@@ -20,12 +20,21 @@ The main webhooks we will focus on are:
   - https://docs.github.com/en/developers/webhooks-and-events/webhook-events-and-payloads#pull_request
   - https://docs.github.com/en/developers/webhooks-and-events/webhook-events-and-payloads#push
 
-But any Github webhook POST payload can be processed.
+But any Github repository webhook POST payload can (should) be processed.
 
 Documentation on setting up github webhooks:
 https://docs.github.com/en/developers/webhooks-and-events/creating-webhooks
 
-Make sure you set the secret as the github secret stored in the Google Cloud Secret Manager and the url should be the Google Cloud Run url for this service.
+Make sure you set:
+  - Payload url: url to google cloud run service (see) Google Cloud Run console
+  - Content type: `application/json`
+  - the secret as the github secret stored in the Google Cloud Secret Manager (default: github-webhook-github-secret)
+
+Access the (default) Github webhook secret via gcloud
+
+```bash
+gcloud secrets versions access latest --secret=github-webhook-github-secret
+```
 
 # Adding hook to config.js
 
@@ -38,7 +47,7 @@ specified Google Cloud Build trigger based on filtering the (JSON) message paylo
     // name of google cloud build trigger
     'rp-sandbox-webhook' : {
       // github message filter
-      fitler : [{
+      filters : [{
         action : 'closed',
         pull_request : {
           merged : true,
@@ -70,5 +79,4 @@ specified Google Cloud Build trigger based on filtering the (JSON) message paylo
 
 Docs: https://cloud.google.com/build/docs/automating-builds/create-webhook-triggers
 
-Make sure you set the trigger secret as the secret stored in the Google Cloud Secret Manager.  The API key should already be in the secret Manager
-
+Make sure you set the trigger secret as the secret stored in the Google Cloud Secret Manager (default: github-webhook-gcb-secret).  The API key should already be in the secret Manager

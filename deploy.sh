@@ -1,6 +1,8 @@
 
 #! /bin/bash
 
+set -e
+
 PROJECT_ID=digital-ucdavis-edu
 CONTAINER_NAME=gh-webhook-gcb-connector
 SERVICE_ACCOUNT_NAME=gh-webhook-gcb-connector@digital-ucdavis-edu.iam.gserviceaccount.com
