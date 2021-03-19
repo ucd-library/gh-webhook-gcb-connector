@@ -11,8 +11,8 @@ The `config.js` file in this repository will be responsible for setting up which
 
 Add a trigger is a three step process:
  - Create a GitHub webhook on your repository that posts to this service
- - Update this service with the proper hook configuration, mapping GitHub webhook message events to Google Cloud Triggers
- - Create a Google Cloud Trigger Webhook to preform the action
+ - Update this service with the proper hook configuration, mapping GitHub webhook message events to Google Cloud Build Triggers
+ - Create a Google Cloud Build - Trigger Webhook to preform the action
 
 # Create Github Webhooks
 
