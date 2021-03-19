@@ -1,0 +1,20 @@
+{
+  "name": "@ucd-lib/gh-webhook-gcb-connector",
+  "version": "0.0.1",
+  "description": "Initiate Google Cloud Build, builds from Github Webhooks",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jrmerz@ucdavis.edu",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/secret-manager": "^3.5.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
+  }
+}
