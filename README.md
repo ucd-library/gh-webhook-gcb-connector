@@ -48,6 +48,7 @@ specified Google Cloud Build trigger based on filtering the (JSON) message paylo
     'rp-sandbox-webhook' : {
       // github message filter
       filters : [{
+        '$event' : 'pull_request',
         action : 'closed',
         pull_request : {
           merged : true,
@@ -68,12 +69,17 @@ specified Google Cloud Build trigger based on filtering the (JSON) message paylo
 ```
 
  - The `hooks` keys are the name of the Google Cloud Build triggers.
- - The `fitler` object must match all provied key/value pairs in the provided Github message, including nested/child objects. In this example: 
+ - The `fitler` object must match all provied key/value pairs in the provided Github message, including nested/child objects. In this example:
+   - The `X-GitHub-Event` is of type `pull_request` (see more below on `$event`) 
    - the `action` must be set to `closed`
    - there must exist a `pull_request` object
    - the `pull_request.merged` property must be set to `true`
    - the `pull_request.base.ref` property must be `sandbox`.  (This is the branch being merged to)
  - The `repositories` array contains the repository names, one of which must be set as the GitHub messages `repository.full_name` property. 
+
+ Two special bits:
+  - `$event` is added to the message payload which is the value of `X-GitHub-Event` header (name of event that sent the message)
+  - If you just want to know if a property exists, you set the filter property to `$exists`.  Will evalutate to `true` as long as the message payload property exists.
 
  # Adding Google Cloud Build - Webook Trigger
 
