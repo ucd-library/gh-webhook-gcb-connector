@@ -70,7 +70,7 @@ specified Google Cloud Build trigger based on filtering the (JSON) message paylo
 
  - The `hooks` keys are the name of the Google Cloud Build triggers.
  - The `fitler` object must match all provied key/value pairs in the provided Github message, including nested/child objects. In this example:
-   - The `X-GitHub-Event` is of type `pull_request` (see more below on `$event`) 
+   - The `X-GitHub-Event` header is of type `pull_request` (see more below on `$event`) 
    - the `action` must be set to `closed`
    - there must exist a `pull_request` object
    - the `pull_request.merged` property must be set to `true`
