@@ -85,4 +85,6 @@ specified Google Cloud Build trigger based on filtering the (JSON) message paylo
 
 Docs: https://cloud.google.com/build/docs/automating-builds/create-webhook-triggers
 
-Make sure you set the trigger secret as the secret stored in the Google Cloud Secret Manager (default: github-webhook-gcb-secret).  The API key should already be in the secret Manager
+Make sure you set the trigger secret as the secret stored in the Google Cloud Secret Manager (default: github-webhook-gcb-secret).  Note, these secrets are versioned and the UI does not allow you to select `latest`, so it is recommended to select the largest number and note that updating the GCB secret means updating the webhook triggers AND redeploying this repository.
+
+The API key should already be in the secret Manager
