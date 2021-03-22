@@ -19,6 +19,26 @@ module.exports = {
         'UCDavisLibrary/fin-ucd-lib-server',
         'UCDavisLibrary/fin-server'
       ]
+    },
+
+    'rp-sandbox-webhook' : {
+      filters : [{
+        '$event' : 'pull_request',
+        action : 'closed',
+        pull_request : {
+          merged : true,
+          base : {
+            ref : 'sandbox'
+          }
+        }
+      },{
+        '$event' : 'push',
+        ref : 'refs/heads/sandbox',
+      }],
+      repositories : [
+        'ucd-library/rp-ucd-client',
+        'ucd-library/vessel'
+      ]
     }
   },
 
