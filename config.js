@@ -2,21 +2,22 @@ module.exports = {
   hooks : {
     'dams-v2-sandbox-webhook' : {
       filters : [
-      // {
-      //   '$event' : 'pull_request',
-      //   action : 'closed',
-      //   pull_request : {
-      //     merged : true,
-      //     base : {
-      //       ref : 'v2.0-sandbox'
-      //     }
-      //   }
-      // },
       {
-        '$event' : 'push',
-        commits : '$exists',
-        ref : 'refs/heads/v2.0-sandbox',
-      }],
+        '$event' : 'pull_request',
+        action : 'closed',
+        pull_request : {
+          merged : true,
+          base : {
+            ref : 'v2.0-sandbox'
+          }
+        }
+      }
+      // {
+      //   '$event' : 'push',
+      //   commits : '$exists',
+      //   ref : 'refs/heads/v2.0-sandbox',
+      // }
+      ],
       repositories : [
         'UCDavisLibrary/fin-ucd-lib-server',
         'UCDavisLibrary/fin-server'
@@ -25,20 +26,21 @@ module.exports = {
 
     'rp-sandbox-webhook' : {
       filters : [
-      // {
-      //   '$event' : 'pull_request',
-      //   action : 'closed',
-      //   pull_request : {
-      //     merged : true,
-      //     base : {
-      //       ref : 'sandbox'
-      //     }
-      //   }
-      // },
       {
-        '$event' : 'push',
-        ref : 'refs/heads/sandbox',
-      }],
+        '$event' : 'pull_request',
+        action : 'closed',
+        pull_request : {
+          merged : true,
+          base : {
+            ref : 'sandbox'
+          }
+        }
+      }
+      // {
+      //   '$event' : 'push',
+      //   ref : 'refs/heads/sandbox',
+      // }
+      ],
       repositories : [
         'ucd-library/rp-ucd-client',
         'ucd-library/vessel'
