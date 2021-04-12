@@ -9,5 +9,4 @@ app.use(require('./lib/controller'));
 
 app.listen(config.server.port, () => {
   console.log('gh-webhook-gcb-connector server running on port: '+config.server.port);
-  ensureSecrets();
 });
