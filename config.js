@@ -45,6 +45,28 @@ module.exports = {
         'ucd-library/rp-ucd-client',
         'ucd-library/vessel'
       ]
+    },
+
+    'ucdlib-theme-webhook' : {
+      filters : [
+        {
+          '$event' : 'pull_request',
+          action : 'closed',
+          pull_request : {
+            merged : true,
+            base : {
+              ref : 'main'
+            }
+          }
+        },
+        {
+          '$event' : 'push',
+          ref : 'refs/heads/main',
+        }
+      ],
+      repositories : [
+        'ucd-library/ucdlib-theme'
+      ]
     }
   },
 
