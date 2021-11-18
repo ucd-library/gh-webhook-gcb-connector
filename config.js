@@ -47,6 +47,29 @@ module.exports = {
       ]
     },
 
+    'rp-rebrand-webhook' : {
+      filters : [
+      {
+        '$event' : 'pull_request',
+        action : 'closed',
+        pull_request : {
+          merged : true,
+          base : {
+            ref : 'rebrand'
+          }
+        }
+      },
+      {
+        '$event' : 'push',
+        ref : 'refs/heads/rebrand',
+      }
+      ],
+      repositories : [
+        'ucd-library/rp-ucd-client',
+        'ucd-library/vessel'
+      ]
+    },
+
     'ucdlib-theme-webhook' : {
       filters : [
         {
