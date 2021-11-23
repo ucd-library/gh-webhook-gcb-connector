@@ -89,9 +89,7 @@ module.exports = {
       ],
       repositories : [
         'UCDavisLibrary/main-wp-website-deployment',
-        'UCDavisLibrary/main-wp-website',
-        'UCDavisLibrary/ucdlib-theme-wp',
-        'UCDavisLibrary/ucdlib-wp-plugins'
+        'UCDavisLibrary/main-wp-website'
       ]
     },
 
