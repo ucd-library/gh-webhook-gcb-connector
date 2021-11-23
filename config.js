@@ -70,6 +70,31 @@ module.exports = {
       ]
     },
 
+    'wp-rebrand-webhook' : {
+      filters : [
+      {
+        '$event' : 'pull_request',
+        action : 'closed',
+        pull_request : {
+          merged : true,
+          base : {
+            ref : 'sandbox'
+          }
+        }
+      },
+      {
+        '$event' : 'push',
+        ref : 'refs/heads/sandbox',
+      }
+      ],
+      repositories : [
+        'UCDavisLibrary/main-wp-website-deployment',
+        'UCDavisLibrary/main-wp-website',
+        'UCDavisLibrary/ucdlib-theme-wp',
+        'UCDavisLibrary/ucdlib-wp-plugins'
+      ]
+    },
+
     'ucdlib-theme-webhook' : {
       filters : [
         {
