@@ -70,7 +70,7 @@ module.exports = {
       ]
     },
 
-    'wp-rebrand-webhook' : {
+    'wp-sandbox-webhook' : {
       filters : [
       {
         '$event' : 'pull_request',
@@ -85,6 +85,29 @@ module.exports = {
       {
         '$event' : 'push',
         ref : 'refs/heads/sandbox',
+      }
+      ],
+      repositories : [
+        'UCDavisLibrary/main-wp-website-deployment',
+        'UCDavisLibrary/main-wp-website'
+      ]
+    },
+
+    'wp-stage-webhook' : {
+      filters : [
+      {
+        '$event' : 'pull_request',
+        action : 'closed',
+        pull_request : {
+          merged : true,
+          base : {
+            ref : 'stage'
+          }
+        }
+      },
+      {
+        '$event' : 'push',
+        ref : 'refs/heads/stage',
       }
       ],
       repositories : [
