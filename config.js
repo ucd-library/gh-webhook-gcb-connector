@@ -49,16 +49,16 @@ module.exports = {
 
     'rp-rebrand-webhook' : {
       filters : [
-      {
-        '$event' : 'pull_request',
-        action : 'closed',
-        pull_request : {
-          merged : true,
-          base : {
-            ref : 'rebrand'
-          }
-        }
-      },
+      // {
+      //   '$event' : 'pull_request',
+      //   action : 'closed',
+      //   pull_request : {
+      //     merged : true,
+      //     base : {
+      //       ref : 'rebrand'
+      //     }
+      //   }
+      // },
       {
         '$event' : 'push',
         ref : 'refs/heads/rebrand',
@@ -72,16 +72,16 @@ module.exports = {
 
     'wp-sandbox-webhook' : {
       filters : [
-      {
-        '$event' : 'pull_request',
-        action : 'closed',
-        pull_request : {
-          merged : true,
-          base : {
-            ref : 'sandbox'
-          }
-        }
-      },
+      // {
+      //   '$event' : 'pull_request',
+      //   action : 'closed',
+      //   pull_request : {
+      //     merged : true,
+      //     base : {
+      //       ref : 'sandbox'
+      //     }
+      //   }
+      // },
       {
         '$event' : 'push',
         ref : 'refs/heads/sandbox',
@@ -104,11 +104,11 @@ module.exports = {
             ref : 'stage'
           }
         }
-      },
-      {
-        '$event' : 'push',
-        ref : 'refs/heads/stage',
       }
+      // {
+      //   '$event' : 'push',
+      //   ref : 'refs/heads/stage',
+      // }
       ],
       repositories : [
         'UCDavisLibrary/main-wp-website-deployment',
@@ -127,11 +127,11 @@ module.exports = {
               ref : 'main'
             }
           }
-        },
-        {
-          '$event' : 'push',
-          ref : 'refs/heads/main',
         }
+        // {
+        //   '$event' : 'push',
+        //   ref : 'refs/heads/main',
+        // }
       ],
       repositories : [
         'ucd-library/ucdlib-theme'
