@@ -2,25 +2,49 @@ module.exports = {
   hooks : {
     'dams-v2-sandbox-webhook' : {
       filters : [
-      {
-        '$event' : 'pull_request',
-        action : 'closed',
-        pull_request : {
-          merged : true,
-          base : {
-            ref : 'v2.0-sandbox'
+        {
+          '$event' : 'pull_request',
+          action : 'closed',
+          pull_request : {
+            merged : true,
+            base : {
+              ref : 'sandbox'
+            }
           }
+        },
+        {
+          '$event' : 'push',
+          commits : '$exists',
+          ref : 'refs/heads/sandbox',
         }
-      }
-      // {
-      //   '$event' : 'push',
-      //   commits : '$exists',
-      //   ref : 'refs/heads/v2.0-sandbox',
-      // }
       ],
       repositories : [
-        'UCDavisLibrary/fin-ucd-lib-server',
-        'UCDavisLibrary/fin-server'
+        'ucd-library/dams-deployment',
+        'ucd-library/dams'
+      ]
+    },
+
+    'dams-v2-dev-webhook' : {
+      filters : [
+        {
+          '$event' : 'pull_request',
+          action : 'closed',
+          pull_request : {
+            merged : true,
+            base : {
+              ref : 'dev'
+            }
+          }
+        },
+        {
+          '$event' : 'push',
+          commits : '$exists',
+          ref : 'refs/heads/dev',
+        }
+      ],
+      repositories : [
+        'ucd-library/dams-deployment',
+        'ucd-library/dams'
       ]
     },
 
