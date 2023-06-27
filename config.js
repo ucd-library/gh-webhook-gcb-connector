@@ -11,12 +11,12 @@ module.exports = {
               ref : 'sandbox'
             }
           }
-        },
-        {
-          '$event' : 'push',
-          commits : '$exists',
-          ref : 'refs/heads/sandbox',
         }
+        // {
+        //   '$event' : 'push',
+        //   commits : '$exists',
+        //   ref : 'refs/heads/sandbox',
+        // }
       ],
       repositories : [
         'ucd-library/dams-deployment',
