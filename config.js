@@ -1,52 +1,52 @@
 module.exports = {
   hooks : {
-    'dams-v2-sandbox-webhook' : {
-      filters : [
-        {
-          '$event' : 'pull_request',
-          action : 'closed',
-          pull_request : {
-            merged : true,
-            base : {
-              ref : 'sandbox'
-            }
-          }
-        }
-        // {
-        //   '$event' : 'push',
-        //   commits : '$exists',
-        //   ref : 'refs/heads/sandbox',
-        // }
-      ],
-      repositories : [
-        'ucd-library/dams-deployment',
-        'ucd-library/dams'
-      ]
-    },
+    // 'dams-v2-sandbox-webhook' : {
+    //   filters : [
+    //     {
+    //       '$event' : 'pull_request',
+    //       action : 'closed',
+    //       pull_request : {
+    //         merged : true,
+    //         base : {
+    //           ref : 'sandbox'
+    //         }
+    //       }
+    //     }
+    //     // {
+    //     //   '$event' : 'push',
+    //     //   commits : '$exists',
+    //     //   ref : 'refs/heads/sandbox',
+    //     // }
+    //   ],
+    //   repositories : [
+    //     'ucd-library/dams-deployment',
+    //     'ucd-library/dams'
+    //   ]
+    // },
 
-    'dams-v2-dev-webhook' : {
-      filters : [
-        {
-          '$event' : 'pull_request',
-          action : 'closed',
-          pull_request : {
-            merged : true,
-            base : {
-              ref : 'dev'
-            }
-          }
-        },
-        {
-          '$event' : 'push',
-          commits : '$exists',
-          ref : 'refs/heads/dev',
-        }
-      ],
-      repositories : [
-        'ucd-library/dams-deployment',
-        'ucd-library/dams'
-      ]
-    },
+    // 'dams-v2-dev-webhook' : {
+    //   filters : [
+    //     {
+    //       '$event' : 'pull_request',
+    //       action : 'closed',
+    //       pull_request : {
+    //         merged : true,
+    //         base : {
+    //           ref : 'dev'
+    //         }
+    //       }
+    //     },
+    //     {
+    //       '$event' : 'push',
+    //       commits : '$exists',
+    //       ref : 'refs/heads/dev',
+    //     }
+    //   ],
+    //   repositories : [
+    //     'ucd-library/dams-deployment',
+    //     'ucd-library/dams'
+    //   ]
+    // },
 
     'rp-sandbox-webhook' : {
       filters : [
